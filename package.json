@@ -2,7 +2,21 @@
   "name": "react-redux-starter-kit",
   "version": "0.1.0",
   "private": true,
+  "description": "Starter kit for React+Redux+React Router projects",
+  "keywords": [
+    "frontend",
+    "UI",
+    "BEM",
+    "typescript",
+    "Create-react-app",
+    "Redux",
+    "React-Router",
+    "Material UI",
+    "starter kit"
+  ],
   "homepage": "https://nzminusdev.github.io/react-redux-starter-kit/",
+  "author": "Nikita Zaitsev <developer.n.zaytsev@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
