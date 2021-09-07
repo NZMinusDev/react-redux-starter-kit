@@ -12,7 +12,18 @@
     "@types/react": "^16.14.15",
     "@types/react-dom": "^16.9.14",
     "@types/react-redux": "^7.1.18",
-    "gh-pages": "^3.2.3"
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-fsd": "^1.0.1",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "eslint-plugin-no-use-extend-native": "^0.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-sonarjs": "^0.10.0",
+    "gh-pages": "^3.2.3",
+    "prettier": "^2.3.2"
   },
   "dependencies": {
     "@material-ui/core": "^5.0.0-beta.5",
@@ -25,16 +36,22 @@
     "react-scripts": "4.0.3",
     "typescript": "^4.1.6"
   },
+  "eslintConfig": {
+    "extends": "./.eslintrc.js"
+  },
+  "prettier": {
+    "endOfLine": "auto",
+    "printWidth": 100,
+    "singleQuote": true
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint:autofix": "eslint ./src/ --ext .js,.jsx,.ts,.tsx --fix",
     "test": "react-scripts test",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
