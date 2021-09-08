@@ -1,3 +1,7 @@
+const { getAliases, getResolvedAliases } = require(`./src/configs/aliases`);
+const resolvedAliases = getResolvedAliases(getAliases('./src/'));
+const normalizedAliases = Object.entries(resolvedAliases);
+
 module.exports = {
   extends: [
     // rules from create-react-app
@@ -117,6 +121,16 @@ module.exports = {
       },
     ],
   },
+
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: normalizedAliases,
+        extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
+      },
+    },
+  },
+
   overrides: [
     {
       files: ['**/*.ts?(x)'],
