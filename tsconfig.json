@@ -1,34 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "alwaysStrict": true,
-    "strictNullChecks": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "baseUrl": "./",
-    "paths": {
-      "@app/*": ["src/app/*"],
-      "@features/*": ["src/features/*"],
-      "@modules/*": ["src/modules/*"],
-      "@services/*": ["src/services/*"],
-      "@shared/*": ["src/shared/*"],
-      "@configs/*": ["src/configs/*"]
-    }
-  },
-  "include": ["src"]
+  "_comment": "This file is used by VSCode intellisense.",
+  "extends": "./configs/ts/tsconfig.json",
+  "compilerOptions": {}
 }

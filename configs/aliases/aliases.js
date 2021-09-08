@@ -5,7 +5,7 @@ const path = require(`path`);
  * @param {string} prefix - path to src folder
  * @returns
  */
-const getAliases = (prefix = '..') => ({
+const getAliases = (prefix = '../../src/') => ({
   '@app': `${prefix}/app`,
   '@features': `${prefix}/features`,
   '@modules': `${prefix}/modules`,

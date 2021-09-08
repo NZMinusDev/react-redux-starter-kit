@@ -1,5 +1,5 @@
-const { getAliases, getResolvedAliases } = require(`./src/configs/aliases`);
-const resolvedAliases = getResolvedAliases(getAliases('./src/'));
+const { getAliases, getResolvedAliases } = require(`../aliases/aliases`);
+const resolvedAliases = getResolvedAliases(getAliases('../../src/'));
 const normalizedAliases = Object.entries(resolvedAliases);
 
 module.exports = {

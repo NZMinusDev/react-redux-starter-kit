@@ -55,23 +55,11 @@
     "react-scripts": "4.0.3",
     "typescript": "^4.1.6"
   },
+  "cracoConfig": "./configs/craco/craco.config.js",
   "eslintConfig": {
-    "extends": "./.eslintrc.js"
+    "extends": "./configs/eslint/.eslintrc.js"
   },
-  "prettier": {
-    "endOfLine": "auto",
-    "printWidth": 100,
-    "singleQuote": true
-  },
-  "lint-staged": {
-    "*": [
-      "prettier --ignore-unknown --write"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "craco test --watchAll=false --bail --findRelatedTests"
-    ]
-  },
+  "prettier": "./configs/prettier/prettier.config.js",
   "scripts": {
     "start": "craco start",
     "test": "craco test",
@@ -79,7 +67,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build",
     "build": "craco build",
-    "prepare": "husky install"
+    "prepare": "husky install configs/husky"
   },
   "browserslist": {
     "production": [
