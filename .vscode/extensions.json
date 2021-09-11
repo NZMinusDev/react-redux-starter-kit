@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ionutvmi.path-autocomplete",
+    "jebbs.plantuml",
+    "davidanson.vscode-markdownlint",
+    "streetsidesoftware.code-spell-checker-russian",
+    "wayou.vscode-todo-highlight"
+  ]
+}

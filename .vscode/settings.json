@@ -1,13 +1,6 @@
 {
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "Ayu Dark Bordered",
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.cursorStyle": "line-thin",
+  "editor.tabSize": 2,
   "editor.rulers": [100],
-  "editor.wordWrap": "wordWrapColumn",
-  "editor.wordWrapColumn": 100,
-  "files.autoSave": "afterDelay",
-  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -39,16 +32,6 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.tsserver.maxTsServerMemory": 4096,
-  "editor.largeFileOptimizations": true,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
-  "editor.emptySelectionClipboard": false,
-  "git.autofetch": true,
-  "git.suggestSmartCommit": false,
-  "gitlens.views.repositories.branches.layout": "list",
   "path-autocomplete.extensionOnImport": true,
   "path-autocomplete.includeExtension": true,
   "path-autocomplete.excludedItems": {
@@ -66,16 +49,18 @@
   },
   "path-autocomplete.triggerOutsideStrings": true,
   "path-autocomplete.enableFolderTrailingSlash": true,
-  "editor.tabSize": 2,
-  "plantuml.exportOutDir": "./",
   "typescript.tsdk": "node_modules\\typescript\\lib",
+  "plantuml.exportOutDir": "./",
+  "cSpell.language": "en,ru",
   "cSpell.words": [
     "autofix",
     "browserslist",
     "CNAME",
     "craco",
     "predeploy",
+    "Quokka",
     "reduxjs",
+    "sassdoc",
     "sonarjs",
     "Zaitsev"
   ]
