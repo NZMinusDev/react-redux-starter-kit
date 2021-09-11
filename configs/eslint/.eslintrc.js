@@ -1,8 +1,8 @@
 const { getAliases, getResolvedAliases } = require(`../aliases/aliases`);
-const resolvedAliases = getResolvedAliases(getAliases('../../src/'));
+const resolvedAliases = getResolvedAliases(getAliases());
 const normalizedAliases = Object.entries(resolvedAliases);
 
-module.exports = {
+const config = {
   extends: [
     // rules from create-react-app
     'react-app',
@@ -19,13 +19,6 @@ module.exports = {
 
     // prevent use of extended native objects
     'plugin:no-use-extend-native/recommended',
-
-    /**
-     * Enables (eslint-plugin-prettier), which run Prettier analysis as part of ESLint.
-     * Disable any linting rule that might interfere with an existing Prettier rule using(eslint-config-prettier).
-     * Should be last for override other configs.
-     */
-    'plugin:prettier/recommended',
   ],
   plugins: ['sonarjs', 'no-loops', 'promise', 'fsd'],
   rules: {
@@ -33,6 +26,37 @@ module.exports = {
     'no-underscore-dangle': 'off',
 
     'lines-between-class-members': 'off',
+
+    // https://github.com/fullstack-development/react-redux-starter-kit/blob/master/.eslintrc.js
+    'react/jsx-props-no-spreading': 'off',
+    'react/state-in-constructor': ['error', 'never'],
+    'react/static-property-placement': ['error', 'static public field'],
+    'react/destructuring-assignment': ['error', 'always', { ignoreClassFields: true }],
+    'react/sort-comp': [
+      'error',
+      {
+        order: [
+          'static-variables',
+          'static-methods',
+          'instance-variables',
+          'getters',
+          'setters',
+          'lifecycle',
+          'render',
+          'instance-methods',
+          'everything-else',
+        ],
+      },
+    ],
+    'import/prefer-default-export': 'off',
+    'import/no-default-export': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: [['builtin', 'external'], 'internal', ['parent', 'sibling'], 'index'],
+        'newlines-between': 'always',
+      },
+    ],
 
     // https://github.com/airbnb/javascript#destructuring--object
     'prefer-destructuring': [
@@ -108,18 +132,6 @@ module.exports = {
     'promise/no-new-statics': 'error',
     'promise/no-return-in-finally': 'warn',
     'promise/valid-params': 'warn',
-
-    // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/imports.js#L139
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-      },
-    ],
   },
 
   settings: {
@@ -148,7 +160,28 @@ module.exports = {
       rules: {
         '@typescript-eslint/lines-between-class-members': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
+        'react/prop-types': 'off',
+        'react/require-default-props': 'off',
+      },
+    },
+    {
+      files: ['**/*.stories.*'],
+
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'import/no-default-export': 'off',
       },
     },
   ],
 };
+
+/**
+ * Enables (eslint-plugin-prettier), which run Prettier analysis as part of ESLint.
+ * Disable any linting rule that might interfere with an existing Prettier rule using(eslint-config-prettier).
+ * Should be last for override other configs.
+ */
+const prettierExtending = 'plugin:prettier/recommended';
+config.extends.push(prettierExtending);
+config.overrides[0].extends.push(prettierExtending);
+
+module.exports = config;
