@@ -11,7 +11,7 @@ const getAliases = (prefix = '../../src/') => ({
   '@modules': `${prefix}/modules`,
   '@services': `${prefix}/services`,
   '@shared': `${prefix}/shared`,
-  '@configs': `${prefix}/configs`,
+  '@assets': `${prefix}/assets`,
 });
 
 const getResolvedAliases = (aliases) =>

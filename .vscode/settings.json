@@ -45,7 +45,7 @@
     "@modules": "${folder}/src/modules",
     "@services": "${folder}/src/services",
     "@shared": "${folder}/src/shared",
-    "@configs": "${folder}/src/configs"
+    "@assets": "${folder}/src/assets"
   },
   "path-autocomplete.triggerOutsideStrings": true,
   "path-autocomplete.enableFolderTrailingSlash": true,
