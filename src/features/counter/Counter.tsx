@@ -9,9 +9,11 @@ import {
   incrementIfOdd,
   selectCount,
 } from './counterSlice';
-import styles from './Counter.module.css';
+import { classes } from './Counter.style';
 
-export function Counter() {
+interface CounterProps {}
+
+const Counter: React.FC<CounterProps> = () => {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
@@ -19,45 +21,50 @@ export function Counter() {
   const incrementValue = Number(incrementAmount) || 0;
 
   return (
-    <div>
-      <div className={styles.row}>
+    <div css={classes.root}>
+      <div css={classes.row}>
         <button
-          className={styles.button}
+          type="button"
+          css={classes.button()}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           -
         </button>
-        <span className={styles.value}>{count}</span>
+        <span css={classes.value}>{count}</span>
         <button
-          className={styles.button}
+          type="button"
+          css={classes.button()}
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
           +
         </button>
       </div>
-      <div className={styles.row}>
+      <div css={classes.row}>
         <input
-          className={styles.textbox}
+          css={classes.textBox}
           aria-label="Set increment amount"
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
         <button
-          className={styles.button}
+          type="button"
+          css={classes.button()}
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
         </button>
         <button
-          className={styles.asyncButton}
+          type="button"
+          css={classes.button({ isAsync: true })}
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
         </button>
         <button
-          className={styles.button}
+          type="button"
+          css={classes.button()}
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
           Add If Odd
@@ -65,4 +72,8 @@ export function Counter() {
       </div>
     </div>
   );
-}
+};
+
+export type { CounterProps };
+
+export { Counter };

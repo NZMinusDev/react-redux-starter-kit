@@ -1,6 +1,7 @@
 import React from 'react';
+import type MDN from 'csstype';
 
-import './button.css';
+import { classes } from './Button.style';
 
 interface ButtonProps {
   /**
@@ -11,7 +12,7 @@ interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
-  primary?: boolean;
+  isPrimary?: boolean;
 
   /**
    * How large should the button be?
@@ -21,7 +22,7 @@ interface ButtonProps {
   /**
    * What background color to use
    */
-  backgroundColor?: string;
+  backgroundColor?: MDN.Property.BackgroundColor;
 
   /**
    * Optional click handler
@@ -34,23 +35,22 @@ interface ButtonProps {
  */
 const Button: React.FC<ButtonProps> = ({
   label,
-  primary = false,
+  isPrimary = false,
   size = 'medium',
   backgroundColor,
   ...props
 }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-
   return (
     <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
+      css={classes.root({ isPrimary, size, backgroundColor })}
       {...props}
     >
       {label}
     </button>
   );
 };
+
+export type { ButtonProps };
 
 export { Button };

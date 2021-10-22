@@ -2,6 +2,9 @@
   "name": "react-redux-starter-kit",
   "version": "0.1.0",
   "private": true,
+  "author": "Nikita Zaitsev <developer.n.zaytsev@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://nzminusdev.github.io/react-redux-starter-kit/",
   "description": "Starter kit for React+Redux+React Router projects",
   "keywords": [
     "frontend",
@@ -14,10 +17,41 @@
     "Material UI",
     "starter kit"
   ],
-  "homepage": "https://nzminusdev.github.io/react-redux-starter-kit/",
-  "author": "Nikita Zaitsev <developer.n.zaytsev@gmail.com>",
-  "license": "MIT",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "not IE 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "scripts": {
+    "start": "craco start",
+    "test": "craco test",
+    "storybook": "start-storybook -p 6006 -c configs/.storybook -s public",
+    "storybook:build": "build-storybook -c configs/.storybook -s public",
+    "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
+    "build": "craco build",
+    "prepare": "husky install configs/husky"
+  },
+  "cracoConfig": "./configs/craco/craco.config.js",
+  "stylelint": {
+    "extends": "./configs/stylelintrc/stylelint.config.js"
+  },
+  "eslintConfig": {
+    "extends": "./configs/eslint/.eslintrc.js"
+  },
+  "prettier": "./configs/prettier/prettier.config.js",
   "devDependencies": {
+    "@emotion/eslint-plugin": "^11.2.0",
+    "@emotion/jest": "^11.3.0",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
@@ -32,13 +66,14 @@
     "@types/react": "^16.14.15",
     "@types/react-dom": "^16.9.14",
     "@types/react-redux": "^7.1.18",
+    "@types/stylelint": "^13.13.2",
+    "csstype": "^3.0.9",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^14.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-fsd": "^1.0.1",
-    "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-no-use-extend-native": "^0.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.1.0",
@@ -47,46 +82,33 @@
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "prettier": "^2.3.2",
-    "source-map-explorer": "^2.5.2"
+    "source-map-explorer": "^2.5.2",
+    "stylelint": "^13.13.1",
+    "stylelint-a11y": "^1.2.3",
+    "stylelint-color-format": "^1.1.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-high-performance-animation": "^1.5.2",
+    "stylelint-no-nested-media": "^0.1.0",
+    "stylelint-no-unsupported-browser-features": "^5.0.2",
+    "stylelint-order": "^4.1.0",
+    "stylelint-prettier": "^1.2.0",
+    "stylelint-use-nesting": "^3.0.0"
   },
   "dependencies": {
     "@craco/craco": "^6.2.0",
-    "@material-ui/core": "^5.0.0-beta.5",
-    "@material-ui/icons": "^4.11.2",
+    "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.1",
+    "@mui/material": "^5.0.1",
     "@reduxjs/toolkit": "^1.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "stylelint-webpack-plugin": "^3.0.1",
     "typescript": "^4.1.6"
-  },
-  "cracoConfig": "./configs/craco/craco.config.js",
-  "eslintConfig": {
-    "extends": "./configs/eslint/.eslintrc.js"
-  },
-  "prettier": "./configs/prettier/prettier.config.js",
-  "scripts": {
-    "start": "craco start",
-    "test": "craco test",
-    "storybook": "start-storybook -p 6006 -c configs/.storybook -s public",
-    "storybook:build": "build-storybook -c configs/.storybook -s public",
-    "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
-    "deploy": "gh-pages -d build",
-    "predeploy": "npm run build",
-    "build": "craco build",
-    "prepare": "husky install configs/husky"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

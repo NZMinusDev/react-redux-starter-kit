@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 const Primary = Template.bind({});
 Primary.args = {
-  primary: true,
+  isPrimary: true,
   label: 'Button',
 };
 

@@ -4,10 +4,12 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "ionutvmi.path-autocomplete",
-    "jebbs.plantuml",
     "davidanson.vscode-markdownlint",
     "streetsidesoftware.code-spell-checker-russian",
     "wayou.vscode-todo-highlight",
-    "silvenon.mdx"
+    "silvenon.mdx",
+    "stylelint.vscode-stylelint",
+    "jpoissonnier.vscode-styled-components",
+    "chinchiheather.vscode-margin-colours"
   ]
 }

@@ -17,21 +17,28 @@ const config = {
     // detect bugs and suspicious patterns in your code (huge unreadable blocks of code)
     'plugin:sonarjs/recommended',
 
+    /**
+     * Enforce best practices for JavaScript promises.
+     */
+    'plugin:promise/recommended',
+
     // prevent use of extended native objects
     'plugin:no-use-extend-native/recommended',
   ],
-  plugins: ['sonarjs', 'no-loops', 'promise', 'fsd'],
+  plugins: ['sonarjs', 'promise', 'fsd', '@emotion'],
   rules: {
     // FIXME: if you know how to make it works with chaining calls of several methods use['error', { allowAfterThis: true }]
     'no-underscore-dangle': 'off',
-
-    'lines-between-class-members': 'off',
 
     // https://github.com/fullstack-development/react-redux-starter-kit/blob/master/.eslintrc.js
     'react/jsx-props-no-spreading': 'off',
     'react/state-in-constructor': ['error', 'never'],
     'react/static-property-placement': ['error', 'static public field'],
-    'react/destructuring-assignment': ['error', 'always', { ignoreClassFields: true }],
+    'react/destructuring-assignment': [
+      'error',
+      'always',
+      { ignoreClassFields: true },
+    ],
     'react/sort-comp': [
       'error',
       {
@@ -53,7 +60,12 @@ const config = {
     'import/order': [
       'error',
       {
-        groups: [['builtin', 'external'], 'internal', ['parent', 'sibling'], 'index'],
+        groups: [
+          ['builtin', 'external'],
+          'internal',
+          ['parent', 'sibling'],
+          'index',
+        ],
         'newlines-between': 'always',
       },
     ],
@@ -74,7 +86,10 @@ const config = {
     'default-param-last': ['error'],
 
     // https://github.com/airbnb/javascript#arrows--use-them
-    'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: false }],
+    'prefer-arrow-callback': [
+      'error',
+      { allowNamedFunctions: false, allowUnboundThis: false },
+    ],
 
     // https://github.com/airbnb/javascript#arrows--implicit-return
     'arrow-body-style': ['error', 'as-needed'],
@@ -111,27 +126,11 @@ const config = {
       { blankLine: 'always', prev: ['const', 'let'], next: ['block-like'] },
       { blankLine: 'always', prev: '*', next: ['return', 'break', 'debugger'] },
       { blankLine: 'always', prev: '*', next: 'export' },
-      { blankLine: 'any', prev: ['case'], next: 'case' },
+      { blankLine: 'any', prev: ['case'], next: ['case', 'default'] },
     ],
 
-    // Disallow use of loops (for, for-in, while, do-while, for-of) - we have forEach, map etc.
-    'no-loops/no-loops': 'error',
-
-    /**
-     * Enforce best practices for JavaScript promises.
-     */
-    'promise/always-return': 'error',
-    'promise/no-return-wrap': 'error',
-    'promise/param-names': 'error',
-    'promise/catch-or-return': 'error',
-    'promise/no-native': 'off',
-    'promise/no-nesting': 'warn',
-    'promise/no-promise-in-callback': 'warn',
-    'promise/no-callback-in-promise': 'warn',
-    'promise/avoid-new': 'warn',
-    'promise/no-new-statics': 'error',
-    'promise/no-return-in-finally': 'warn',
-    'promise/valid-params': 'warn',
+    '@emotion/pkg-renaming': 'error',
+    '@emotion/syntax-preference': [2, 'string'],
   },
 
   settings: {
@@ -147,21 +146,45 @@ const config = {
     {
       files: ['**/*.ts?(x)'],
 
-      extends: [
-        // List of recommended rules by https://github.com/iamturns/eslint-config-airbnb-typescript
-        'airbnb-typescript',
-      ],
-
       // https://github.com/iamturns/eslint-config-airbnb-typescript
       parserOptions: {
         project: './tsconfig.json',
       },
 
+      extends: [
+        // List of recommended rules by https://github.com/iamturns/eslint-config-airbnb-typescript
+        'airbnb-typescript',
+      ],
+
       rules: {
-        '@typescript-eslint/lines-between-class-members': 'off',
+        'dot-notation': 'off',
+        '@typescript-eslint/dot-notation': [
+          'error',
+          {
+            allowPrivateClassPropertyAccess: true,
+            allowProtectedClassPropertyAccess: true,
+          },
+        ],
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'react/prop-types': 'off',
         'react/require-default-props': 'off',
+      },
+    },
+    {
+      files: ['**/*.style.js', '**/*.style.ts'],
+      rules: {
+        // https://emotion.sh/docs/@emotion/babel-plugin#labelformat, see /configs/craco/craco.config.js
+        'sonarjs/prefer-immediate-return': 'off',
+      },
+    },
+    {
+      files: ['**/*Slice.ts?(x)'],
+      rules: {
+        // https://redux-toolkit.js.org/usage/immer-reducers
+        'no-param-reassign': [
+          'error',
+          { props: true, ignorePropertyModificationsFor: ['state'] },
+        ],
       },
     },
     {
