@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CssBaseline from '@mui/material/CssBaseline';
 import { Provider } from 'react-redux';
 
-import './index.css';
+import { GlobalCSS } from '@shared/styles/GlobalCSS/GlobalCSS';
 
 import { App } from './App';
 import { store } from './app/store';
@@ -12,8 +11,9 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CssBaseline />
-      <App />
+      <GlobalCSS>
+        <App />
+      </GlobalCSS>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

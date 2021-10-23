@@ -3,6 +3,7 @@
 - [project supports](#project-supports);
 - [what you should use](#what-you-should-use);
 - [example](#example);
+- [additional tools](#additional-tools).
 
 ## Project supports
 
@@ -195,3 +196,11 @@ const classes = {
   `,
 };
 ```
+
+### Theme
+
+Customize [theme file](../src/shared/styles/theme.ts) and use `useTheme()` hook for accessing the theme in a component(or `withTheme` HOC if you sure about class components), for more information read [doc](https://mui.com/customization/theming/).
+
+## Additional tools
+
+[Design creation](https://mui.com/customization/theming/#theme-builder).

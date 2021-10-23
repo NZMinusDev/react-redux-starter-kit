@@ -1,0 +1,6 @@
+@import-normalize;
+
+/* TODO: https://github.com/mui-org/material-ui/issues/15251 */
+:root {
+  font-size: max(12px, calc(1vw * 16 / 14.4));
+}
