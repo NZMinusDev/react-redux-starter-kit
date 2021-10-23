@@ -16,7 +16,6 @@
     - [normalize.css](https://create-react-app.dev/docs/adding-css-reset);
     - [CSS Baseline](https://next.material-ui.com/components/css-baseline/).
   - manually usage:
-    - [csstype](https://github.com/frenic/csstype#readme);
     - [material icons](https://mui.com/components/icons/#material-icons).
 
 ## What you should use
@@ -118,7 +117,6 @@ File `Button.tsx`
 
 ```tsx
 import React from 'react';
-import type MDN from 'csstype';
 
 import { classes } from './Button.style';
 
@@ -141,7 +139,7 @@ interface ButtonProps {
   /**
    * What background color to use
    */
-  backgroundColor?: MDN.Property.BackgroundColor;
+  backgroundColor?: React.CSSProperties['backgroundColor'];
 
   /**
    * Optional click handler

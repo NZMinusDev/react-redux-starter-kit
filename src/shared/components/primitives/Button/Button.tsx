@@ -1,5 +1,4 @@
 import React from 'react';
-import type MDN from 'csstype';
 
 import { classes } from './Button.style';
 
@@ -22,7 +21,7 @@ interface ButtonProps {
   /**
    * What background color to use
    */
-  backgroundColor?: MDN.Property.BackgroundColor;
+  backgroundColor?: React.CSSProperties['backgroundColor'];
 
   /**
    * Optional click handler
