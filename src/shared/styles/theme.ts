@@ -18,6 +18,7 @@ const theme = createTheme({
   status: {
     danger: orange[500],
   },
+  spacing: (factor: number) => `${factor}em`,
 });
 
 export { theme };
