@@ -16,7 +16,8 @@
     - [normalize.css](https://create-react-app.dev/docs/adding-css-reset);
     - [CSS Baseline](https://next.material-ui.com/components/css-baseline/).
   - manually usage:
-    - [material icons](https://mui.com/components/icons/#material-icons).
+    - [material icons](https://mui.com/components/icons/#material-icons);
+    - [fontawesome](https://github.com/FortAwesome/react-fontawesome) with _@fortawesome/free-solid-svg-icons_, _@fortawesome/free-regular-svg-icons_ and _@fortawesome/free-brands-svg-icons_.
 
 ## What you should use
 
@@ -197,8 +198,9 @@ const classes = {
 
 ### Theme
 
-Customize [theme file](../src/shared/styles/theme.ts) and use `useTheme()` hook for accessing the theme in a component(or `withTheme` HOC if you sure about class components), for more information read [doc](https://mui.com/customization/theming/).
+Customize [theme file](../src/shared/styles/theme.ts) and use `useTheme()` from `@mui/material` hook for accessing the theme in a component(or `withTheme` HOC if you sure about class components), for more information read [doc](https://mui.com/customization/theming/).
 
 ## Additional tools
 
-[Design creation](https://mui.com/customization/theming/#theme-builder).
+[Design creation](https://mui.com/customization/theming/#theme-builder);
+[Templates](https://mui.com/getting-started/templates/).
