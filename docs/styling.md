@@ -17,7 +17,8 @@
     - [CSS Baseline](https://next.material-ui.com/components/css-baseline/).
   - manually usage:
     - [material icons](https://mui.com/components/icons/#material-icons);
-    - [fontawesome](https://github.com/FortAwesome/react-fontawesome) with _@fortawesome/free-solid-svg-icons_, _@fortawesome/free-regular-svg-icons_ and _@fortawesome/free-brands-svg-icons_.
+    - [fontawesome](https://github.com/FortAwesome/react-fontawesome) with _@fortawesome/free-solid-svg-icons_, _@fortawesome/free-regular-svg-icons_ and _@fortawesome/free-brands-svg-icons_;
+    - [MDI](https://github.com/TeamWertarbyte/mdi-material-ui).
 
 ## What you should use
 
