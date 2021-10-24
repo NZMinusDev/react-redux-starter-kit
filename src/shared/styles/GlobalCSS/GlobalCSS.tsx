@@ -1,33 +1,18 @@
 import React from 'react';
-import {
-  CssBaseline,
-  useMediaQuery,
-  createTheme,
-  ThemeProvider,
-} from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
-import { theme } from '../theme';
+import { useTheme } from '../theme/useTheme';
 import './GlobalCSS.css';
 
 interface GlobalCSSProps {}
 
 const GlobalCSS: React.FC<GlobalCSSProps> = ({ children }) => {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-
-  const themeWithSystemMode = React.useMemo(
-    () =>
-      createTheme(theme, {
-        palette: {
-          mode: prefersDarkMode ? 'dark' : 'light',
-        },
-      }),
-    [prefersDarkMode]
-  );
+  const theme = useTheme();
 
   return (
     <>
       <CssBaseline />
-      <ThemeProvider theme={themeWithSystemMode}>#{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </>
   );
 };

@@ -199,7 +199,7 @@ const classes = {
 
 ### Theme
 
-Customize [theme file](../src/shared/styles/theme.ts) and use `useTheme()` from `@mui/material` hook for accessing the theme in a component(or `withTheme` HOC if you sure about class components), for more information read [doc](https://mui.com/customization/theming/).
+Customize [theme files](../src/shared/styles/theme) and use `useTheme()` from `@mui/material` hook for accessing the theme in a component(or `withTheme` HOC if you sure about class components), for more information read [doc](https://mui.com/customization/theming/).
 
 ## Additional tools
 
