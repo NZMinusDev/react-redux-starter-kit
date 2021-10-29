@@ -107,6 +107,7 @@
     "@mui/material": "^5.0.1",
     "@mui/x-data-grid": "^5.0.0-beta.5",
     "@reduxjs/toolkit": "^1.6.1",
+    "favicons-webpack-plugin": "^4.2.0",
     "mdi-material-ui": "^7.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
