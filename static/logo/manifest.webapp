@@ -1,0 +1,14 @@
+{
+  "version": "0.1.0",
+  "name": "react-redux-starter-kit",
+  "description": "Starter kit for React+Redux+React Router projects",
+  "icons": {
+    "60": "/react-redux-starter-kit/static/logo/firefox_app_60x60.png",
+    "128": "/react-redux-starter-kit/static/logo/firefox_app_128x128.png",
+    "512": "/react-redux-starter-kit/static/logo/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": "Nikita Zaitsev",
+    "url": null
+  }
+}
