@@ -7,6 +7,8 @@
     "runtime-main.js.map": "/react-redux-starter-kit/static/js/runtime-main.3edddb08.js.map",
     "static/js/2.a5b38586.chunk.js": "/react-redux-starter-kit/static/js/2.a5b38586.chunk.js",
     "static/js/2.a5b38586.chunk.js.map": "/react-redux-starter-kit/static/js/2.a5b38586.chunk.js.map",
+    "obsolete.js": "/react-redux-starter-kit/static/js/obsolete.93c49746.chunk.js",
+    "obsolete.js.map": "/react-redux-starter-kit/static/js/obsolete.93c49746.chunk.js.map",
     "index.html": "/react-redux-starter-kit/index.html",
     "static/css/main.c0935fc3.chunk.css.map": "/react-redux-starter-kit/static/css/main.c0935fc3.chunk.css.map",
     "static/js/2.a5b38586.chunk.js.LICENSE.txt": "/react-redux-starter-kit/static/js/2.a5b38586.chunk.js.LICENSE.txt",
@@ -78,6 +80,7 @@
     "static/js/runtime-main.3edddb08.js",
     "static/js/2.a5b38586.chunk.js",
     "static/css/main.c0935fc3.chunk.css",
-    "static/js/main.aa0b6d3b.chunk.js"
+    "static/js/main.aa0b6d3b.chunk.js",
+    "static/js/obsolete.93c49746.chunk.js"
   ]
 }
