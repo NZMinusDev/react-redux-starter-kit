@@ -1,5 +1,6 @@
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const ObsoleteWebpackPlugin = require('obsolete-webpack-plugin');
 
 const { getAliases, getResolvedAliases } = require('../aliases/aliases');
 const { extensions: styles } = require('../stylelintrc/validated-extensions');
@@ -21,7 +22,6 @@ module.exports = {
         new StyleLintPlugin({
           extensions: styles,
         }),
-
         new FaviconsWebpackPlugin({
           // svg works too!
           logo: './src/assets/ico/logo.png',
@@ -36,6 +36,9 @@ module.exports = {
           // FIXME: wait https://github.com/itgalaxy/favicons/pull/289 and change it to 'true' + delete <link> and <meta> related to icons from '../../public/index.html'
           inject: false,
         }),
+
+        // TODO: customize by template option and make chunk the first
+        new ObsoleteWebpackPlugin(),
       ],
     },
   },
