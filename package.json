@@ -50,6 +50,7 @@
   },
   "prettier": "./configs/prettier/prettier.config.js",
   "devDependencies": {
+    "@axe-core/react": "^4.3.1",
     "@emotion/eslint-plugin": "^11.2.0",
     "@emotion/jest": "^11.3.0",
     "@storybook/addon-actions": "^6.3.8",

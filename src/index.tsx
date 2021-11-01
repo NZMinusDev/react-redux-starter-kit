@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import { GlobalCSS } from '@shared/styles/GlobalCSS/GlobalCSS';
 
+import './axe';
 import { App } from './App';
 import { store } from './app/store';
 import * as serviceWorker from './serviceWorker';

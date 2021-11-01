@@ -188,11 +188,22 @@ const config = {
       },
     },
     {
+      files: ['**/*.test.*', '**/setupTests.ts'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
       files: ['**/*.stories.*'],
-
       rules: {
         'import/no-extraneous-dependencies': 'off',
         'import/no-default-export': 'off',
+      },
+    },
+    {
+      files: ['**/axe.ts'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],
