@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import { GlobalCSS } from '@shared/styles/GlobalCSS/GlobalCSS';
+import { ThemeProvider } from '@services/theme';
 
 import './axe';
 import { App } from './App';
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <GlobalCSS>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </GlobalCSS>
     </Provider>
   </React.StrictMode>,

@@ -1,5 +1,6 @@
-import counterReducer, {
+import {
   CounterState,
+  counterReducer,
   increment,
   decrement,
   incrementByAmount,

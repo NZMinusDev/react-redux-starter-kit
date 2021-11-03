@@ -1,21 +1,32 @@
 import React from 'react';
+import { useTheme } from '@mui/material';
+
+import { ThemeSelector } from '@services/theme';
+import { Typography } from '@shared/components/primitives';
 
 import { Counter } from './features/counter/Counter';
 import logo from './logo.svg';
-import { classes } from './App.style';
+import { getClasses } from './App.style';
 
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
+  const theme = useTheme();
+  const classes = getClasses({}, theme);
+
   return (
     <div css={classes.root}>
-      <header css={classes.header}>
+      <main css={classes.main}>
+        <Typography variant="h1" css={classes.heading}>
+          Demo
+        </Typography>
+        <ThemeSelector />
         <img src={logo} css={classes.logo} alt="logo" />
         <Counter />
-        <p>
+        <p css={classes.text}>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <span>
+        <span css={classes.text}>
           <span>Learn </span>
           <a
             css={classes.link}
@@ -53,7 +64,7 @@ const App: React.FC<AppProps> = () => {
             React Redux
           </a>
         </span>
-      </header>
+      </main>
     </div>
   );
 };

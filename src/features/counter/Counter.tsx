@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTheme } from '@mui/material';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -6,10 +7,10 @@ import {
   increment,
   incrementByAmount,
   incrementAsync,
-  incrementIfOdd,
+  makeIncrementIfOdd,
   selectCount,
 } from './counterSlice';
-import { classes } from './Counter.style';
+import { getClasses } from './Counter.style';
 
 interface CounterProps {}
 
@@ -17,6 +18,8 @@ const Counter: React.FC<CounterProps> = () => {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
+  const theme = useTheme();
+  const classes = getClasses({}, theme);
 
   const incrementValue = Number(incrementAmount) || 0;
 
@@ -65,7 +68,7 @@ const Counter: React.FC<CounterProps> = () => {
         <button
           type="button"
           css={classes.button()}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
+          onClick={() => dispatch(makeIncrementIfOdd(incrementValue))}
         >
           Add If Odd
         </button>

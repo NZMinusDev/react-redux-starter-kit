@@ -1,6 +1,9 @@
+import { alpha } from '@mui/material';
 import { css } from '@emotion/react';
 
-const classes = {
+import { Theme } from '@shared/styles/theme';
+
+const getClasses = (props: {}, theme: Theme) => ({
   root: css`
     display: flex;
     flex-direction: column;
@@ -11,7 +14,7 @@ const classes = {
     justify-content: center;
 
     &:not(:last-child) {
-      margin-bottom: 16px;
+      margin-bottom: ${theme.spacing(4)};
     }
   `,
   button: (options: { isAsync?: boolean } = { isAsync: false }) => {
@@ -27,7 +30,7 @@ const classes = {
           display: block;
           width: 100%;
           height: 100%;
-          background-color: rgb(112 76 182 / 0.15);
+          background-color: ${alpha(theme.palette.primary.main, 0.15)};
           content: '';
           opacity: 0;
 
@@ -49,27 +52,33 @@ const classes = {
       `;
 
     const button = css`
-      margin-right: 8px;
-      margin-left: 4px;
-      padding-right: 12px;
-      padding-bottom: 4px;
-      padding-left: 12px;
+      margin-right: ${theme.spacing(2)};
+      margin-left: ${theme.spacing(1)};
+      padding: ${theme.spacing(0, 3, 1, 3)};
       outline: none;
       border: 2px solid transparent;
-      border-radius: 2px;
+      border-radius: ${theme.shape.borderRadius}px;
       background: none;
-      background-color: rgb(112 76 182 / 0.1);
-      color: rgb(112 76 182);
-      font-size: 32px;
-      transition: border-color 0.15s, background-color 0.15s;
+      background-color: ${alpha(theme.palette.primary.main, 0.1)};
+      color: ${theme.palette.primary.main};
+      font-size: ${theme.typography.pxToRem(theme.typography.htmlFontSize * 2)};
+      cursor: pointer;
+      transition: border-color ${theme.transitions.duration.shortest}ms,
+        background-color ${theme.transitions.duration.shortest}ms;
       appearance: none;
 
       &:hover,
       &:focus {
-        border-color: rgb(112 76 182 / 0.4);
+        border-color: ${alpha(
+          theme.palette.primary.main,
+          theme.palette.action.focusOpacity
+        )};
       }
       &:active {
-        background-color: rgb(112 76 182 / 0.2);
+        background-color: ${alpha(
+          theme.palette.primary.main,
+          theme.palette.action.activatedOpacity
+        )};
       }
 
       ${isAsync}
@@ -78,19 +87,19 @@ const classes = {
     return button;
   },
   value: css`
-    margin-top: 2px;
-    padding-right: 16px;
-    padding-left: 16px;
-    font-size: 78px;
-    font-family: 'Courier New', Courier, monospace;
+    padding-right: ${theme.spacing(4)};
+    padding-left: ${theme.spacing(4)};
+    color: ${theme.palette.text.primary};
+    font-size: ${theme.typography.pxToRem(theme.typography.htmlFontSize * 5)};
+    font-family: ${theme.typography.body1.fontFamily};
   `,
   textBox: css`
-    margin-right: 4px;
-    padding: 2px;
-    width: 64px;
+    margin-right: ${theme.spacing(2)};
+    padding: ${theme.spacing(1)};
+    width: ${theme.spacing(16)};
     text-align: center;
-    font-size: 32px;
+    font-size: ${theme.typography.pxToRem(theme.typography.htmlFontSize * 2)};
   `,
-};
+});
 
-export { classes };
+export { getClasses };

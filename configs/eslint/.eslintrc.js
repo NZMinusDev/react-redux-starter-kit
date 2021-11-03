@@ -175,6 +175,8 @@ const config = {
       rules: {
         // https://emotion.sh/docs/@emotion/babel-plugin#labelformat, see /configs/craco/craco.config.js
         'sonarjs/prefer-immediate-return': 'off',
+
+        'sonarjs/no-identical-functions': 'off',
       },
     },
     {

@@ -22,7 +22,7 @@
 
 ## What you should use
 
-- [emotion/react](https://emotion.sh/docs/@emotion/react) as main tool, see more: [emotion css prop](https://emotion.sh/docs/css-prop), [composition](https://emotion.sh/docs/composition), [nesting](https://emotion.sh/docs/nested), [media](https://emotion.sh/docs/media-queries), [theming](https://emotion.sh/docs/theming), [testing](https://emotion.sh/docs/@emotion/jest). Also it's not recommended to use [object styles](https://emotion.sh/docs/object-styles) and [styled components](https://emotion.sh/docs/styled) cause of lame linting and hard looking;
+- [emotion/react](https://emotion.sh/docs/@emotion/react) as main tool(use `'@emotion/react'` path instead of `'@mui/material'` cause of `@emotion/babel-preset-css-prop`), see more: [emotion css prop](https://emotion.sh/docs/css-prop), [composition](https://emotion.sh/docs/composition), [nesting](https://emotion.sh/docs/nested), [media](https://emotion.sh/docs/media-queries), [theming](https://emotion.sh/docs/theming), [testing](https://emotion.sh/docs/@emotion/jest). Also it's not recommended to use [object styles](https://emotion.sh/docs/object-styles) and [styled components](https://emotion.sh/docs/styled) cause of lame linting and hard looking;
 - [material UI](https://mui.com/ru/guides/interoperability/#emotion) as main framework, see more: [material environment](https://material.io/design/environment/surfaces.html#properties) works;
 - [storybook](https://storybook.js.org/) for ui kit creation.
 
@@ -37,54 +37,62 @@ File `Button.style.ts`
 ```ts
 import { css } from '@emotion/react';
 
-const classes = {
-  // dynamic css
-  root: (
-    options: {
-      isPrimary?: ButtonProps['isPrimary'];
-      size?: ButtonProps['size'];
-      backgroundColor?: ButtonProps['backgroundColor'];
-    } = {}
-  ) => {
-    const isPrimary = options.isPrimary
+import { Theme } from '@shared/styles/theme';
+
+import type { ButtonProps } from './Button';
+
+const getClasses = (
+  // shared props(from component)
+  props: {
+    isPrimary: ButtonProps['isPrimary'];
+    size: ButtonProps['size'];
+    backgroundColor: ButtonProps['backgroundColor'];
+  },
+  theme: Theme
+) => ({
+  /*
+   * here you can pass related to element's props in the scope, they should be optional for deconstruction usage and require not to use style logic in the component file, it's recommended to use smth like 'options' var for namespace
+   * also you can just assign css`` instead of function for static style
+   */
+  root: () => {
+    const isPrimary = props.isPrimary
       ? css`
-          background-color: rgb(30 167 253);
-          color: white;
+          background-color: ${theme.palette.primary.main};
+          color: ${theme.palette.primary.contrastText};
         `
       : css`
-          background-color: transparent;
-          box-shadow: rgb(0 0 0 / 0.15) 0 0 0 1px inset;
-          color: rgb(51 51 51);
+          background-color: ${theme.palette.secondary.main};
+          color: ${theme.palette.secondary.contrastText};
         `;
     const backgroundColor =
-      options.backgroundColor &&
+      props.backgroundColor &&
       css`
-        background-color: ${options.backgroundColor};
+        background-color: ${props.backgroundColor};
       `;
 
     let size;
 
-    switch (options.size) {
+    switch (props.size) {
       case 'small': {
         size = css`
-          padding: 10px 16px;
-          font-size: 12px;
+          padding: ${theme.spacing(0.5, 1)};
+          font-size: ${theme.typography.pxToRem(12)};
         `;
 
         break;
       }
       case 'medium': {
         size = css`
-          padding: 11px 20px;
-          font-size: 14px;
+          padding: ${theme.spacing(1, 2)};
+          font-size: ${theme.typography.pxToRem(14)};
         `;
 
         break;
       }
       case 'large': {
         size = css`
-          padding: 12px 24px;
-          font-size: 16px;
+          padding: ${theme.spacing(1.5, 3)};
+          font-size: ${theme.typography.pxToRem(16)};
         `;
 
         break;
@@ -97,30 +105,30 @@ const classes = {
     const button = css`
       display: inline-block;
       border: 0;
-      border-radius: 3em;
-      font-weight: 700;
-      font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      line-height: 1;
+      font-weight: ${theme.typography.button.fontWeight};
+      font-family: ${theme.typography.button.fontFamily};
+      line-height: ${theme.typography.button.lineHeight};
 
-      /* composition */
       ${isPrimary}
       ${size}
       ${backgroundColor}
     `;
 
+    // you should return variable instead of instant returning cause of css class naming tied to variable's name
     return button;
   },
-};
+});
 
-export { classes };
+export { getClasses };
 ```
 
 File `Button.tsx`
 
 ```tsx
+import { useTheme } from '@mui/material';
 import React from 'react';
 
-import { classes } from './Button.style';
+import { getClasses } from './Button.style';
 
 interface ButtonProps {
   /**
@@ -149,6 +157,9 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
+/**
+ * Primary UI component for user interaction
+ */
 const Button: React.FC<ButtonProps> = ({
   label,
   isPrimary = false,
@@ -156,12 +167,11 @@ const Button: React.FC<ButtonProps> = ({
   backgroundColor,
   ...props
 }) => {
+  const theme = useTheme();
+  const classes = getClasses({ isPrimary, size, backgroundColor }, theme);
+
   return (
-    <button
-      type="button"
-      css={classes.root({ isPrimary, size, backgroundColor })}
-      {...props}
-    >
+    <button type="button" css={classes.root()} {...props}>
       {label}
     </button>
   );

@@ -30,6 +30,22 @@ module.exports = {
     'keyframes-name-pattern': /^[a-z]+([a-z0-9-]+[a-z0-9]+)?$/,
     'custom-property-pattern': /^[a-z]+([a-z0-9-]+[a-z0-9]+)?$/,
     'custom-media-pattern': /^[a-z]+([a-z0-9-]+[a-z0-9]+)?$/,
+
+    // CSS-in-JS
+    'function-name-case': [
+      'lower',
+      { ignoreFunctions: [/.*(hexToRgb|pxToRem).*/] },
+    ],
+    'value-keyword-case': [
+      'lower',
+      {
+        ignoreKeywords: [
+          /.*(htmlFontSize|hoverOpacity|selectedOpacity|disabledBackground|disabledOpacity|focusOpacity|activatedOpacity).*/,
+        ],
+      },
+    ],
+    'no-empty-source': null,
+
     'value-no-vendor-prefix': true,
     'property-no-vendor-prefix': true,
     'selector-no-vendor-prefix': true,
