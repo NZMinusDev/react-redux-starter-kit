@@ -1,13 +1,14 @@
 import { css } from '@emotion/react';
 
-const classes = {
+import { Theme } from '@shared/styles/theme';
+
+const getClasses = (props: {}, theme: Theme) => ({
   wrapper: css`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 20px;
-    border-bottom: 1px solid rgb(0 0 0 / 0.1);
-    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: ${theme.spacing(4, 5)};
+    border-bottom: 1px solid ${theme.palette.divider};
   `,
   icon: css`
     display: inline-block;
@@ -15,17 +16,15 @@ const classes = {
   `,
   title: css`
     display: inline-block;
-    margin: 6px 0 6px 10px;
+    margin: ${theme.spacing(2, 0, 2, 3)};
     vertical-align: top;
-    font-weight: 900;
-    font-size: 20px;
-    line-height: 1;
+    font-weight: ${theme.typography.fontWeightBold};
   `,
   buttons: css`
     display: grid;
     grid-auto-flow: column;
-    grid-column-gap: 10px;
+    grid-column-gap: ${theme.spacing(3)};
   `,
-};
+});
 
-export { classes };
+export { getClasses };

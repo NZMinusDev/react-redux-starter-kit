@@ -1,6 +1,7 @@
+import { useTheme } from '@mui/material';
 import React from 'react';
 
-import { classes } from './Button.style';
+import { getClasses } from './Button.style';
 
 interface ButtonProps {
   /**
@@ -39,12 +40,11 @@ const Button: React.FC<ButtonProps> = ({
   backgroundColor,
   ...props
 }) => {
+  const theme = useTheme();
+  const classes = getClasses({ isPrimary, size, backgroundColor }, theme);
+
   return (
-    <button
-      type="button"
-      css={classes.root({ isPrimary, size, backgroundColor })}
-      {...props}
-    >
+    <button type="button" css={classes.root()} {...props}>
       {label}
     </button>
   );

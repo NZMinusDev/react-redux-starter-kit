@@ -1,66 +1,64 @@
 import { css } from '@emotion/react';
 
-const classes = {
+import { Theme } from '@shared/styles/theme';
+
+const getClasses = (props: {}, theme: Theme) => ({
   section: css`
     margin: 0 auto;
-    padding: 48px 20px;
-    max-width: 600px;
-    color: rgb(51 51 51);
-    font-size: 14px;
-    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 24px;
+    padding: ${theme.spacing(12, 5)};
+    max-width: ${theme.spacing(150)};
+    color: ${theme.palette.grey['700']};
   `,
   title: css`
     display: inline-block;
-    margin: 0 0 4px;
+    margin: ${theme.spacing(0, 0, 4)};
     vertical-align: top;
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 1;
+    font-weight: ${theme.typography.fontWeightBold};
+    font-size: ${theme.typography.h2.fontSize};
+    line-height: ${theme.typography.h2.lineHeight};
   `,
   paragraph: css`
-    margin: 1em 0;
+    margin: ${theme.spacing(2, 0)};
   `,
   link: css`
-    color: rgb(30 167 253);
+    color: ${theme.palette.primary.main};
     text-decoration: none;
   `,
   list: css`
-    margin: 1em 0;
-    padding-left: 30px;
+    margin: ${theme.spacing(2, 0)};
+    padding-left: ${theme.spacing(8)};
   `,
   listItem: css`
-    margin-bottom: 8px;
+    margin-bottom: ${theme.spacing(2)};
   `,
   tipWrapper: css`
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 13px;
-    line-height: 20px;
+    margin-top: ${theme.spacing(10, 0)};
+    font-size: ${theme.typography.body2.fontSize};
+    line-height: ${theme.typography.body2.lineHeight};
   `,
   tip: css`
     display: inline-block;
-    margin-right: 10px;
-    padding: 4px 12px;
+    margin-right: ${theme.spacing(3, 0)};
+    padding: ${theme.spacing(1, 3)};
     border-radius: 1em;
-    background: rgb(231 253 216);
-    color: rgb(102 191 60);
+    background: ${theme.palette.background.default};
+    color: ${theme.palette.secondary.main};
     vertical-align: top;
-    font-weight: 700;
-    font-size: 11px;
-    line-height: 12px;
+    font-weight: ${theme.typography.fontWeightBold};
+    font-size: ${theme.typography.caption.fontSize};
+    line-height: ${theme.typography.caption.lineHeight};
   `,
   icon: css`
     display: inline-block;
-    margin-top: 3px;
-    margin-right: 4px;
-    width: 12px;
-    height: 12px;
+    margin-top: ${theme.spacing(1)};
+    margin-right: ${theme.spacing(1)};
+    width: ${theme.spacing(3)};
+    height: ${theme.spacing(3)};
     vertical-align: top;
   `,
   iconPath: css`
-    fill: rgb(30 167 253);
+    fill: ${theme.palette.primary.main};
   `,
-};
+});
 
-export { classes };
+export { getClasses };
