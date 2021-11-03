@@ -5,6 +5,8 @@ const ObsoleteWebpackPlugin = require('obsolete-webpack-plugin');
 const { getAliases, getResolvedAliases } = require('../aliases/aliases');
 const { extensions: styles } = require('../stylelintrc/validated-extensions');
 
+const alias = getResolvedAliases(getAliases());
+
 module.exports = {
   babel: {
     presets: [
@@ -16,7 +18,7 @@ module.exports = {
     ],
   },
   webpack: {
-    alias: getResolvedAliases(getAliases()),
+    alias,
     plugins: {
       add: [
         new StyleLintPlugin({
@@ -43,8 +45,23 @@ module.exports = {
     },
   },
   jest: {
-    configure: {
-      snapshotSerializers: ['@emotion/jest/serializer'],
+    /*
+     * configure: {
+     *   snapshotSerializers: ['@emotion/jest/serializer'],
+     * },
+     */
+    configure: (jestConfig) => {
+      const theJestConfig = jestConfig;
+
+      theJestConfig.snapshotSerializers = ['@emotion/jest/serializer'];
+
+      Object.entries(alias).forEach(([aliasStatement, path]) => {
+        theJestConfig.moduleNameMapper[
+          `${aliasStatement}(.*)$`
+        ] = `${path}\\$1`;
+      });
+
+      return theJestConfig;
     },
   },
 };
