@@ -1,0 +1,3 @@
+const glossary = {};
+
+export { glossary };

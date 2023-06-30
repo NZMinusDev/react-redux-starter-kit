@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -20,6 +21,7 @@ const Counter: React.FC<CounterProps> = () => {
   const [incrementAmount, setIncrementAmount] = useState('2');
   const theme = useTheme();
   const classes = getClasses({}, theme);
+  const { t } = useTranslation('features/Counter');
 
   const incrementValue = Number(incrementAmount) || 0;
 
@@ -56,21 +58,21 @@ const Counter: React.FC<CounterProps> = () => {
           css={classes.button()}
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
-          Add Amount
+          {t('addAmount')}
         </button>
         <button
           type="button"
           css={classes.button({ isAsync: true })}
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
-          Add Async
+          {t('addAsync')}
         </button>
         <button
           type="button"
           css={classes.button()}
           onClick={() => dispatch(makeIncrementIfOdd(incrementValue))}
         >
-          Add If Odd
+          {t('addIfOdd')}
         </button>
       </div>
     </div>

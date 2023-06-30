@@ -209,6 +209,7 @@ const classes = {
 
 ### Theme
 
+// TODO: вынести темы в сервис чтобы их можно было настраивать оттуда (использовать createTheme(sharedTheme) )
 Customize [theme files](../src/shared/styles/theme) and use `useTheme()` from `@mui/material` hook for accessing the theme in a component(or `withTheme` HOC if you sure about class components), for more information read [doc](https://mui.com/customization/theming/).
 
 ## Additional tools

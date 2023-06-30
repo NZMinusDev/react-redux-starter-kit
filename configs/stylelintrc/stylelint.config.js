@@ -81,8 +81,8 @@ module.exports = {
     'declaration-block-no-redundant-longhand-properties': true,
     'declaration-no-important': true,
     'selector-combinator-disallowed-list': [' '],
-    'selector-max-id': 0,
-    'selector-max-type': 0,
+    'selector-max-id': [0, { ignoreContextFunctionalPseudoClasses: ['#root'] }],
+    'selector-max-type': [0, { ignoreTypes: ['body'] }],
     'selector-pseudo-element-colon-notation': 'single',
 
     // FIXME: for appending it should be discussed

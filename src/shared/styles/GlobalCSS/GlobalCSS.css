@@ -1,6 +1,14 @@
 @import-normalize;
 
-/* TODO: https://github.com/mui-org/material-ui/issues/15251 */
 :root {
+  height: 100%;
+
+  /* TODO: https://github.com/mui-org/material-ui/issues/15251 */
   font-size: max(12px, calc(1vw * 16 / 14.4));
+}
+
+body,
+[id='root'] {
+  /* FIXME: Добавить макс >100% */
+  height: 100%;
 }

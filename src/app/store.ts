@@ -4,25 +4,41 @@ import {
   Action,
   combineReducers,
 } from '@reduxjs/toolkit';
+import { throttle } from 'lodash-es';
 
 import { counterReducer } from '@features/counter/counterSlice';
+// TODO: from index
 import { themeReducer } from '@services/theme/redux/themeSlice';
 
-export const store = configureStore({
+import { loadState, saveState } from './localStorage';
+
+const preloadedState = loadState();
+const store = configureStore({
   reducer: {
     services: combineReducers({ theme: themeReducer }),
     features: combineReducers({ counter: counterReducer }),
     // modules: combineReducers({}),
   },
+  preloadedState,
 });
 
-export type AppDispatch = typeof store.dispatch;
+store.subscribe(
+  throttle(() => {
+    saveState(store.getState());
+  }, 1000)
+);
 
-export type RootState = ReturnType<typeof store.getState>;
+type AppDispatch = typeof store.dispatch;
 
-export type AppThunk<ReturnType = void> = ThunkAction<
+type RootState = ReturnType<typeof store.getState>;
+
+type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
   Action<string>
 >;
+
+export type { AppDispatch, RootState, AppThunk };
+
+export { store };

@@ -1,4 +1,7 @@
 const { getAliases, getResolvedAliases } = require(`../aliases/aliases`);
+const fsdStarterKitRules = require('./fsdStarterKitRules');
+const missedAirBnBRules = require('./missedAirBnBRules');
+
 const resolvedAliases = getResolvedAliases(getAliases());
 const normalizedAliases = Object.entries(resolvedAliases);
 
@@ -30,104 +33,11 @@ const config = {
     // FIXME: if you know how to make it works with chaining calls of several methods use['error', { allowAfterThis: true }]
     'no-underscore-dangle': 'off',
 
-    // https://github.com/fullstack-development/react-redux-starter-kit/blob/master/.eslintrc.js
-    'react/jsx-props-no-spreading': 'off',
-    'react/state-in-constructor': ['error', 'never'],
-    'react/static-property-placement': ['error', 'static public field'],
-    'react/destructuring-assignment': [
-      'error',
-      'always',
-      { ignoreClassFields: true },
-    ],
-    'react/sort-comp': [
-      'error',
-      {
-        order: [
-          'static-variables',
-          'static-methods',
-          'instance-variables',
-          'getters',
-          'setters',
-          'lifecycle',
-          'render',
-          'instance-methods',
-          'everything-else',
-        ],
-      },
-    ],
-    'import/prefer-default-export': 'off',
-    'import/no-default-export': 'error',
-    'import/order': [
-      'error',
-      {
-        groups: [
-          ['builtin', 'external'],
-          'internal',
-          ['parent', 'sibling'],
-          'index',
-        ],
-        'newlines-between': 'always',
-      },
-    ],
+    ...fsdStarterKitRules,
 
-    // https://github.com/airbnb/javascript#destructuring--object
-    'prefer-destructuring': [
-      'error',
-      {
-        array: true,
-        object: true,
-      },
-    ],
+    ...missedAirBnBRules,
 
-    // https://github.com/airbnb/javascript#functions--declarations
-    'func-style': ['error', 'expression'],
-
-    // https://github.com/airbnb/javascript#functions--defaults-last
-    'default-param-last': ['error'],
-
-    // https://github.com/airbnb/javascript#arrows--use-them
-    'prefer-arrow-callback': [
-      'error',
-      { allowNamedFunctions: false, allowUnboundThis: false },
-    ],
-
-    // https://github.com/airbnb/javascript#arrows--implicit-return
-    'arrow-body-style': ['error', 'as-needed'],
-
-    /*
-     * TODO: here should be rule like as 'method-void-implicit-error'
-     * https://github.com/airbnb/javascript#constructors--chaining
-     */
-
-    // https://github.com/airbnb/javascript#comments--multiline
-    'multiline-comment-style': ['error', 'starred-block'],
-
-    // https://github.com/airbnb/javascript#comments--singleline
-    'line-comment-position': ['error', { position: 'above' }],
-    'lines-around-comment': [
-      'error',
-      {
-        beforeBlockComment: true,
-        beforeLineComment: true,
-        allowBlockStart: true,
-        allowClassStart: true,
-        allowObjectStart: true,
-        allowArrayStart: true,
-      },
-    ],
-
-    // https://github.com/airbnb/javascript#whitespace--chains
-    'newline-per-chained-call': ['error', { ignoreChainWithDepth: 4 }],
-
-    // https://github.com/airbnb/javascript#whitespace--after-blocks
-    'padding-line-between-statements': [
-      'error',
-      { blankLine: 'always', prev: ['block-like'], next: '*' },
-      { blankLine: 'always', prev: ['const', 'let'], next: ['block-like'] },
-      { blankLine: 'always', prev: '*', next: ['return', 'break', 'debugger'] },
-      { blankLine: 'always', prev: '*', next: 'export' },
-      { blankLine: 'any', prev: ['case'], next: ['case', 'default'] },
-    ],
+    'promise/no-callback-in-promise': 'off',
 
     '@emotion/pkg-renaming': 'error',
     '@emotion/syntax-preference': [2, 'string'],
@@ -165,8 +75,6 @@ const config = {
             allowProtectedClassPropertyAccess: true,
           },
         ],
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        'react/prop-types': 'off',
         'react/require-default-props': 'off',
       },
     },
